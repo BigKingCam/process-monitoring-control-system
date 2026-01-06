@@ -1,4 +1,4 @@
-#Project: Industrial Process Monitoring, Control, and Visualization System
+# Project: Industrial Process Monitoring, Control, and Visualization System
 
 _This project is under active development._
 
