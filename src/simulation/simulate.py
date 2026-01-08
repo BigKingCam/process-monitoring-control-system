@@ -42,3 +42,21 @@ for k in range(len(time) - 1):
         hA = params["hA"]
     )
 T[k + 1] = T[k] + dT_dt * dt    # Euler integration (PLC-like)
+
+
+# sensor noise
+np.random.seed(0)   # ?TODO: make more random
+sensor_noise_std = 0.3 # (°C)
+
+Temp_Out = T + np.random.normal(0, sensor_noise_std, size = len(T))
+# result: true process temperature, measured sensor value
+
+
+# KPI2 Efficiency Deviation computation
+Efficiency = np.zeros_like(time)
+
+for k in range(len(time)):
+    if (Q_in[k] > 0):
+        Efficiency[k] = (params["m_dot"] * params["c_p"] * (Temp_Out[k] - params["T_in"])) / Q_in[k]
+    else:
+        Efficiency[k] = 0.0
