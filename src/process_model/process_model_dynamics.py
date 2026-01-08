@@ -8,9 +8,9 @@ def thermal_tank_dynamics(
     T_amb,
     T_in,
     m,
+    m_dot,
     c_p,
-    hA,
-    m_dot
+    hA
 ):
     """
     Computes dT/dt for a well-mixed thermal tank.
@@ -27,12 +27,12 @@ def thermal_tank_dynamics(
         Inlet temperature (°C)
     m : float
         Mass of fluid (kg)
+    m_dot : float
+        Mass flow rate (kg/s)
     c_p : float
         Specific heat capacity (kJ/kg·°C)
     hA : float
         Heat loss coefficient (kW/°C)
-    m_dot : float
-        Mass flow rate (kg/s)
 
     Returns
     -------
