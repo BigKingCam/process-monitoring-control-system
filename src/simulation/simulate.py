@@ -45,7 +45,7 @@ T[k + 1] = T[k] + dT_dt * dt    # Euler integration (PLC-like)
 
 
 # sensor noise
-np.random.seed(0)   # ?TODO: make more random
+np.random.seed(0)   # ?TODO: make more/true random
 sensor_noise_std = 0.3 # (°C)
 
 Temp_Out = T + np.random.normal(0, sensor_noise_std, size = len(T))
@@ -60,3 +60,28 @@ for k in range(len(time)):
         Efficiency[k] = (params["m_dot"] * params["c_p"] * (Temp_Out[k] - params["T_in"])) / Q_in[k]
     else:
         Efficiency[k] = 0.0
+
+# SCADA-style tags (Ignition-esque)
+tags = {
+    "Temp_Out" : Temp_Out,
+    "Fuel_Input" : Q_in,
+    "Efficiency" : Efficiency
+}
+
+
+## Example Plot Generation
+plt.figure()
+plt.plot(time / 60, Temp_Out)
+plt.xlabel("Time (minutes)")
+plt.ylabel("Temperature (°C)")
+plt.title("Process Temperature")
+plt.grid()
+
+plt.figure()
+plt.plot(time / 60, Efficiency)
+plt.xlabel("Time (minutes)")
+plt.ylabel("Efficiency")
+plt.title("Thermal Efficiency")
+plt.grid()
+
+plt.show()
