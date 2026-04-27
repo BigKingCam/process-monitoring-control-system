@@ -1,7 +1,14 @@
-### Process model function describing the dynamics of the systems (thermal tank or boiler).
+"""
+Filename: process_model_dynamics.py
+Purpose: Process model function describing the dynamics of the systems
+            (thermal tank or boiler).
+Author: Cameron L. Nolen
+Created: 2026-01-07
+"""
 
-# A first-order, lumped-parameter thermal process used as a surrogate for boiler operation and efficiency analysis.
 
+# A first-order, lumped-parameter thermal process used as a surrogate for
+# boiler operation and efficiency analysis.
 def thermal_tank_dynamics(
     T,
     Q_in,
@@ -39,8 +46,9 @@ def thermal_tank_dynamics(
     dTdt : float
         Time derivative of temperature (°C/s)
     """
-    
+
     heat_loss = hA * (T - T_amb)
     E_flow_loss = m_dot * c_p * (T - T_in)
-    # dT_dt = (Q_in - heat_loss - E_flow_loss) / (m * c_p)
-    return ((Q_in - heat_loss - E_flow_loss) / (m * c_p))
+    dT_dt = (Q_in - heat_loss - E_flow_loss) / (m * c_p)
+
+    return dT_dt
