@@ -6,7 +6,7 @@ Created: 2026-01-07
 """
 
 
-DEFAULT_PARAMS: dict[str, int] = {
+DEFAULT_PARAMS: dict[str, float] = {
     "T_amb": 25.0,       # °C
     "T_in": 20.0,        # °C
     "m": 100.0,          # kg

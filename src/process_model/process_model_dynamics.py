@@ -10,15 +10,15 @@ Created: 2026-01-07
 # A first-order, lumped-parameter thermal process used as a surrogate for
 # boiler operation and efficiency analysis.
 def thermal_tank_dynamics(
-    T,
-    Q_in,
-    T_amb,
-    T_in,
-    m,
-    m_dot,
-    c_p,
-    hA
-):
+    T: float,
+    Q_in: float,
+    T_amb: float,
+    T_in: float,
+    m: float,
+    m_dot: float,
+    c_p: float,
+    hA: float
+) -> float:
     """
     Computes dT/dt for a well-mixed thermal tank.
 
